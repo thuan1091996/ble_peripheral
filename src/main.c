@@ -5,8 +5,14 @@
  */
 
 #include <zephyr.h>
+#include <logging/log.h>
+
+#define MODULE_NAME			main_module
+#define MODULE_LOG_LEVEL	LOG_LEVEL_DBG
+
+LOG_MODULE_REGISTER(MODULE_NAME, MODULE_LOG_LEVEL);
 
 void main(void)
 {
-	printk("Hello World! %s\n", CONFIG_BOARD);
+	LOG_INF("BLE sample demo using %s", CONFIG_BOARD);
 }
