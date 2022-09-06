@@ -14,9 +14,12 @@
 LOG_MODULE_REGISTER(MODULE_NAME, MODULE_LOG_LEVEL);
 
 
-/* BLE callbacks*/
 
-static struct bt_conn *current_conn;
+
+/* BLE callbacks*/
+static struct bt_conn  *current_conn;
+static ble_gatt_cb_t	my_srv_callbacks;
+
 
 void on_connected(struct bt_conn *conn, uint8_t err)
 {
@@ -45,5 +48,5 @@ struct bt_conn_cb ble_cb = {
 void main(void)
 {
 	LOG_INF("BLE sample demo using %s", CONFIG_BOARD);
-	ble_init(&ble_cb);
+	ble_init(&ble_cb, &my_srv_callbacks);
 }
